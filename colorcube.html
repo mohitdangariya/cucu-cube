@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <style>
+      td {
+        border: 1px;
+
+        height: 50px;
+
+        width: 50px;
+
+        border-radius: 10px;
+
+        background-color: rgb(23, 22, 22);
+      }
+
+      table {
+        border: 1px solid rgb(7, 7, 7);
+      }
+
+      #timeLine {
+        height: 25px;
+
+        width: 50px;
+
+        background-color: crimson;
+
+        border-radius: 50px;
+
+        text-align: center;
+
+        color: rgb(253, 68, 68);
+      }
+    </style>
+  </head>
+  <table id="name" inputmode="between" align="center">
+    WELCOME to the Game
+  </table>
+  <body>
+    <center>
+      <div id="container"></div>
+    </center>
+  </body>
+
+  <script>
+    var mohit_main = document.getElementById("container");
+
+    createTable(3);
+
+    function createTable(mohit_counter) {
+      let size = mohit_counter;
+
+      let head = ",";
+
+      let data = "";
+
+      data += `<table>`;
+
+      // logic with loop
+
+      for (let i = 0; i < size; i++) {
+        data += "<tr>";
+
+        for (let j = 0; j < size; j++) {
+          data += "<td></td>";
+        }
+
+        data += "</tr>";
+      }
+
+      data += "</table>";
+
+      mohit_main.innerHTML = data;
+
+      var mohit_td = document.querySelectorAll("td");
+
+      var mohit_random = Math.floor(Math.random() * mohit_td.length);
+
+      var mohit_r = Math.floor(Math.random() * 255);
+
+      var mohit_g = Math.floor(Math.random() * 255);
+
+      var mohit_b = Math.floor(Math.random() * 255);
+
+      
+
+      mohit_td.forEach((td) => {
+        td.style.backgroundColor =
+          "rgb(" + mohit_r + "," + mohit_g + "," + mohit_b + ")";
+      });
+
+      mohit_td[
+        mohit_random
+      ].style.backgroundColor = `rgba(${mohit_r},${mohit_g},${mohit_b},${0.5})`;
+
+      mohit_td[mohit_random].addEventListener("click", () => {
+        data = "";
+
+        if (size == 20) {
+          // gameover();
+
+          // resetTimer();
+
+          return false;
+        }
+
+        createTable(++size);
+      });
+    }
+  </script>
+</html>

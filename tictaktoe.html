@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TIC TAC TOE</title>
+
+    <style>
+      body {
+        background-color: #0f4f1a;
+        border-radius: 1px;
+        margin-top: 2px;
+      }
+
+      #title {
+        margin: 2% 33%;
+      }
+
+      #table {
+        font-size: 55px;
+
+        margin: 2% 35%;
+
+        background-color: #6fc27c;
+
+        height: 370px;
+
+        border: 2px solid #6fc27c;
+
+        border-radius: 10px;
+        
+        padding: auto;
+      }
+
+      .td {
+        text-align: center;
+
+        width: 120px;
+
+        height: 120px;
+      }
+
+      #info {
+        color: rgb(4, 3, 15);
+
+        font-size: 22px;
+
+        margin: 1% 39%;
+
+        /* display: flex; */
+      }
+
+      #info-1 {
+        flex-direction: row;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 id="title" aria-colcount="red">WELCOME TO THE TIC TAK TOE...</h2>
+
+    <table id="table" border="1">
+      <tr id="tr-1">
+        <td id="td1" class="td" onclick="cross(this)"></td>
+
+        <td id="td2" class="td" onclick="cross(this)"></td>
+
+        <td id="td3" class="td" onclick="cross(this)"></td>
+      </tr>
+
+      <tr id="tr-2">
+        <td id="td4" class="td" onclick="cross(this)"></td>
+
+        <td id="td5" class="td" onclick="cross(this)"></td>
+
+        <td id="td6" class="td" onclick="cross(this)"></td>
+      </tr>
+
+      <tr id="tr-3">
+        <td id="td7" class="td" onclick="cross(this)"></td>
+
+        <td id="td8" class="td" onclick="cross(this)"></td>
+
+        <td id="td9" class="td" onclick="cross(this)"></td>
+      </tr>
+    </table>
+
+    <div id="info">
+      <p id="info-1">Player 1 : Tik &nbsp&nbsp&nbsp</p>
+
+      <p id="info-2">Player 2 : Cross </p>
+    </div>
+
+    <span id="result"></span>
+  </body>
+
+  <script type="text/javascript">
+    // let mohit_Sel = (mohit)=>{ document.querySelectorAll(mohit);}
+
+    mohitflag = 0;
+
+    function cross(mohit) {
+      if (mohitflag == 0 && mohit.innerHTML == "") {
+        mohit.innerHTML = "X";
+
+        mohitflag = 1;
+      } else if (mohit.innerHTML == "") {
+        mohit.innerHTML = "0";
+
+        mohitflag = 0;
+      }
+
+      var mohit_td1 = document.getElementById("td1").innerHTML;
+
+      var mohit_td2 = document.getElementById("td2").innerHTML;
+
+      var mohit_td3 = document.getElementById("td3").innerHTML;
+
+      var mohit_td4 = document.getElementById("td4").innerHTML;
+
+      var mohit_td5 = document.getElementById("td5").innerHTML;
+
+      var mohit_td6 = document.getElementById("td6").innerHTML;
+
+      var mohit_td7 = document.getElementById("td7").innerHTML;
+
+      var mohit_td8 = document.getElementById("td8").innerHTML;
+
+      var mohit_td9 = document.getElementById("td9").innerHTML;
+
+      
+
+      var mohit123 = mohit_td1 + mohit_td2 + mohit_td3;
+      var mohit456 = mohit_td4 + mohit_td5 + mohit_td6;
+      var mohit789 = mohit_td7 + mohit_td8+ mohit_td9;
+      var mohit147 = mohit_td1 + mohit_td4 + mohit_td7;
+      var mohit258 = mohit_td2 + mohit_td5 + mohit_td8;
+      var mohit369 = mohit_td3 + mohit_td6 + mohit_td9;
+      var mohit159 = mohit_td1 + mohit_td5 + mohit_td9;
+      var mohit357 = mohit_td3 + mohit_td5 + mohit_td7;
+    
+
+      if (
+          mohit123 == "XXX" ||
+          mohit456 == "XXX" ||
+          mohit789 == "XXX" ||
+          mohit147 == "XXX" ||
+          mohit258 == "XXX" ||
+          mohit369 == "XXX" ||
+          mohit159 == "XXX" ||
+          mohit357 == "XXX") 
+       {
+        // document.getElementById("td6").innerHTML = "*";
+        alert("player 1 is winner!!");
+        
+
+        // document.getElementById("result").innerHTML = "you 1  winn";
+
+        // if (document.getElementById("td6").value == "*") {
+        // }
+      } else if (
+        mohit123 == "000" ||
+        mohit456 == "000" ||
+        mohit789 == "000" ||
+        mohit147 == "000" ||
+        mohit258 == "000" ||
+        mohit369 == "000" ||
+        mohit159 == "000" ||
+        mohit357 == "000") 
+       {
+        // document.getElementById("td6").innerHTML = "X";
+        // alert("win");
+        // document.getElementById("result").innerHTML = "you 2 winn";
+        alert("player 2 is winner!!");
+        
+      }
+    }
+  </script>
+</html>

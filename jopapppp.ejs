@@ -1,0 +1,181 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <div id="ac1">
+
+
+
+    </div>
+
+    <form action="/search" method="post">
+
+        <input type="text" name="search" id="search" placeholder="Search...">
+
+        <input type="submit" value="submit" name="submit" />
+
+    </form>
+
+   
+            <pre>
+        $- fname,
+        &- lname, 
+        #- email,
+        ~- contact, 
+        @- city
+        </pre>
+        <table align="center" class="timeline-table2" border="1" style="background-color:rgb(238, 222, 222);">
+
+<tr class="header">
+
+            <td></td>
+            <td class="table_header">candidate_id</td>
+            <td  class="table_header">candidate_fname</td>
+            <td class="table_header">candidate_lname</td>
+
+            <td class="table_header">candidate_city</td>
+            <td class="table_header">candidate_contact</td>
+
+            <td class="table_header">candidate_email</td>
+
+
+            <td></td>
+        </tr>
+
+        <% for(var i=0;i<data.length;i++) { %>
+
+            <tr id="<%= data[i].candidate_id %>">
+                <td>
+                    <input type="checkbox" name="muldel" id="muldel" class="deleteId" value="<%= data[i].candidate_id %>">
+                </td>
+                <td>
+                    <%= data[i].candidate_id %>
+                </td>
+                <td>
+                    <%= data[i].candidate_fname %>
+                </td>
+
+                <td>
+                    <%= data[i].candidate_lname %>
+                </td>
+                <td>
+                    <%= data[i].candidate_city %>
+                </td>
+                <td>
+                    <%= data[i].candidate_contact %>
+                </td>
+                <td>
+                    <%= data[i].candidate_email %>
+                </td>
+                <td>
+                    <a href="/delete?id=<%=data[i].candidate_id%>" id="id" onclick="confirmation(`<%=data[i].candidate_id%>`)">delete</a>
+                </td>
+
+
+
+
+            </tr>
+
+            <% }%>
+
+    </table>
+    <p style="margin-left:35%;padding-top:10px;font-size:large;font-weight:bold;
+
+               text-align:center;width:250px;height:30px;border-radius:5px;background-color:rgb(228, 81, 2);border:2px solid black;"
+onclick="muldel()">Delete All</p>
+
+</body>
+
+<script>
+    async function confirmation(id){
+        console.log("inner id: -" + id)
+
+        if(confirm("are you sure you want to delete this")) {
+            fetch(`http://localhost:3000/delete?id= ${id}`);
+            document.getElementById(id).style.display = "none";
+
+        }
+        else {
+            alert("No one deleted")
+        }
+    }
+
+    async function muldel() {
+var checkedvalue = [];
+
+var ids = document.getElementsByClassName('deleteId');
+for (var i = 0; i < ids.length; i++) {
+if (ids[i].checked) {
+checkedvalue.push(ids[i].value)
+}
+}
+
+console.log(checkedvalue,join)
+
+console.log(checkedvalue);
+if (confirm("Do you want to delete all selected records?"))
+{
+if (checkedvalue.length >= 2) {
+
+
+for (let i = 0; i < checkedvalue.length; i++) {
+
+document.getElementById(`${checkedvalue[i]}`).style.display = "none";
+
+}
+
+const ans = await
+fetch(`http://localhost:3000/deleterecord?candidate_id=${checkedvalue}`);
+}
+}
+}
+
+
+
+
+
+
+
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
